@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor & Optimizer - Compress Photos Online</title>
+    <meta name="description" content="Online image compression tool to reduce file size without losing quality. Optimize and compress JPG, PNG, and other images for faster websites.">
+    <meta name="keywords" content="image compressor, image optimizer, compress image, reduce image size, online image compressor, free tool, SEO optimization">
+    <meta name="author" content="Gemini">
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e5e7eb;
+            color: #1f2937;
+        }
+        .container {
+            max-width: 1100px;
+        }
+        .custom-file-input::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+        .custom-file-input::before {
+            content: 'Select Image';
+            display: inline-block;
+            background: #4f46e5;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        .custom-file-input:hover::before {
+            background: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        /* Style for the range slider */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4f46e5;
+            cursor: pointer;
+            border-radius: 50%;
+            margin-top: -8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background 0.3s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #4338ca;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #4f46e5;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background 0.3s ease;
+        }
+        input[type="range"]::-moz-range-thumb:hover {
+            background: #4338ca;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-12 min-h-screen flex flex-col items-center justify-center bg-gray-100">
+
+    <!-- Main Card Container -->
+    <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-12 w-full max-w-4xl mx-auto flex flex-col items-center">
+        
+        <!-- Header Section -->
+        <header class="text-center mb-8 w-full">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-2">Image Compressor & Optimizer</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Reduce the size of your images for free, without losing quality. Perfect for web and mobile use.</p>
+        </header>
+
+        <!-- AdSense Ad Code Placeholder -->
+        <div class="w-full h-24 bg-gray-200 rounded-xl mb-8 flex items-center justify-center text-center text-gray-500 text-sm">
+            <p>Advertisement | Google AdSense Ad Unit</p>
+            <!-- Paste your Google AdSense ad code here -->
+        </div>
+
+        <!-- Tool Controls -->
+        <div class="w-full flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
+            <label for="image-upload" class="custom-file-input">
+                <input type="file" id="image-upload" accept="image/*" class="hidden">
+            </label>
+            
+            <div class="w-full md:w-auto text-center md:text-left">
+                <label for="quality-slider" class="text-gray-700 font-medium whitespace-nowrap">Compression Quality: <span id="quality-value" class="font-bold text-indigo-600">80%</span></label>
+                <input type="range" id="quality-slider" min="10" max="100" value="80" class="w-full md:w-64 h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer mt-2">
+            </div>
+
+            <button id="compress-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                Compress Image
+            </button>
+        </div>
+
+        <!-- Image Comparison & Details -->
+        <div id="image-container" class="w-full hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+                
+                <!-- Original Image Container -->
+                <div class="bg-gray-50 rounded-2xl p-6 shadow-inner flex flex-col items-center">
+                    <h3 class="text-xl font-semibold mb-4 text-center text-gray-700">Original Image</h3>
+                    <img id="original-image" src="#" alt="Original Image" class="w-full h-auto rounded-lg max-h-96 object-contain border border-gray-200">
+                    <p class="text-sm text-center text-gray-600 mt-4">Size: <span id="original-size" class="font-medium text-gray-800">0 KB</span></p>
+                </div>
+
+                <!-- Compressed Image Container -->
+                <div class="bg-gray-50 rounded-2xl p-6 shadow-inner flex flex-col items-center">
+                    <h3 class="text-xl font-semibold mb-4 text-center text-gray-700">Compressed Image</h3>
+                    <img id="compressed-image" src="#" alt="Compressed Image" class="w-full h-auto rounded-lg max-h-96 object-contain border border-gray-200">
+                    <p class="text-sm text-center text-gray-600 mt-4">Size: <span id="compressed-size" class="font-medium text-gray-800">0 KB</span></p>
+                </div>
+            </div>
+
+            <!-- Download Button -->
+            <div class="mt-12 text-center">
+                <a id="download-link" href="#" download="compressed_image.jpg" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-12 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hidden">
+                    Download
+                </a>
+            </div>
+        </div>
+
+        <!-- Canvas for Compression (hidden from view) -->
+        <canvas id="compression-canvas" class="hidden"></canvas>
+        
+        <!-- Welcome/Initial Message -->
+        <div id="welcome-message" class="text-center py-12">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 mx-auto text-indigo-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <p class="text-xl text-gray-500 font-medium">Please select an image to get started.</p>
+        </div>
+        
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2024 Image Compressor. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const imageUpload = document.getElementById('image-upload');
+            const originalImage = document.getElementById('original-image');
+            const compressedImage = document.getElementById('compressed-image');
+            const originalSizeSpan = document.getElementById('original-size');
+            const compressedSizeSpan = document.getElementById('compressed-size');
+            const qualitySlider = document.getElementById('quality-slider');
+            const qualityValueSpan = document.getElementById('quality-value');
+            const compressBtn = document.getElementById('compress-btn');
+            const downloadLink = document.getElementById('download-link');
+            const imageContainer = document.getElementById('image-container');
+            const welcomeMessage = document.getElementById('welcome-message');
+            const canvas = document.getElementById('compression-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            let originalFile;
+
+            // Handle file selection
+            imageUpload.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) {
+                    return;
+                }
+                originalFile = file;
+
+                // Hide welcome message, show the tool
+                welcomeMessage.classList.add('hidden');
+                imageContainer.classList.remove('hidden');
+
+                // Read the file and display original image
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        originalImage.src = img.src;
+                        originalSizeSpan.textContent = `${(originalFile.size / 1024).toFixed(2)} KB`;
+                        
+                        // Set canvas dimensions to match the image
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        
+                        // Enable the compress button
+                        compressBtn.disabled = false;
+                        
+                        // Trigger initial compression with default quality
+                        compressImage();
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+
+            // Update quality value display
+            qualitySlider.addEventListener('input', () => {
+                qualityValueSpan.textContent = `${qualitySlider.value}%`;
+            });
+            
+            // Handle compression on button click
+            compressBtn.addEventListener('click', () => {
+                if (originalImage.src.length > 1) {
+                    compressImage();
+                }
+            });
+            
+            // Handle compression on slider change
+            qualitySlider.addEventListener('change', () => {
+                if (originalImage.src.length > 1) {
+                    compressImage();
+                }
+            });
+
+            // Compression logic
+            function compressImage() {
+                const img = new Image();
+                img.src = originalImage.src;
+                
+                img.onload = () => {
+                    // Draw the image onto the canvas
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    
+                    // Get the compression quality from the slider (convert to 0-1 range)
+                    const quality = parseInt(qualitySlider.value) / 100;
+                    
+                    // Convert canvas content to a data URL with specified quality
+                    const compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+                    
+                    // Display compressed image and update size
+                    compressedImage.src = compressedDataUrl;
+                    
+                    // Calculate and display new size
+                    const compressedSize = compressedDataUrl.length * 0.75; // Approximation for base64 to byte size
+                    compressedSizeSpan.textContent = `${(compressedSize / 1024).toFixed(2)} KB`;
+                    
+                    // Enable and update download link
+                    downloadLink.href = compressedDataUrl;
+                    downloadLink.classList.remove('hidden');
+                };
+            }
+        });
+    </script>
+</body>
+</html>
+
