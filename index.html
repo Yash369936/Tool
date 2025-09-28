@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolHub Pro - Your All-in-One Image & PDF Utility Center</title>
+    <meta name="description" content="Access the best free online tools for image optimization, compression, resizing, and comprehensive PDF management (merge, split, convert, protect). Fast, secure, and user-friendly.">
+    <meta name="keywords" content="image tools, PDF tools, compress image, merge PDF, convert PDF, photo resize, file utility, free online tools">
+    
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font and base dark styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* Very dark background */
+            color: #ffffff;
+            transition: background-color 0.3s;
+        }
+        
+        /* Custom colors and component styling */
+        .tool-card {
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            border: 1px solid #2d2d2d;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6; /* Blue hover glow */
+        }
+
+        /* Define custom Tailwind configuration */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#3b82f6', /* Tailwind Blue 500 */
+                        'bg-dark': '#1a1a1a',
+                        'card-dark': '#242424',
+                        'success-emerald': '#10b981', /* Green/Emerald for PDF section */
+                    }
+                }
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-card-dark sticky top-0 z-20 border-b border-gray-700 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <h1 class="text-3xl font-bold tracking-tight text-white">
+                Tool<span class="text-primary-blue">Hub</span> Pro
+            </h1>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#image-tools" class="text-gray-300 hover:text-primary-blue transition-colors font-medium">Image Tools</a>
+                <a href="#pdf-tools" class="text-gray-300 hover:text-success-emerald transition-colors font-medium">PDF Tools</a>
+                <a href="#" class="text-gray-300 hover:text-white transition-colors font-medium">About</a>
+            </nav>
+            <button class="bg-primary-blue hover:bg-blue-600 text-white font-medium py-1.5 px-4 rounded-lg text-sm transition-colors">
+                Sign In
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow w-full">
+        
+        <!-- Hero Section: High Impact CTA -->
+        <section class="bg-card-dark py-20 border-b border-gray-700 text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-5xl sm:text-6xl font-extrabold mb-4 tracking-tighter leading-tight">
+                    Your <span class="text-primary-blue">Ultimate Toolkit</span> for Digital Files
+                </h2>
+                <p class="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
+                    Transform, optimize, and manage all your images and PDF documents instantly, securely, and for free.
+                </p>
+                <a href="#image-tools" class="bg-success-emerald hover:bg-emerald-600 text-white font-bold text-lg py-3 px-8 rounded-xl shadow-xl shadow-success-emerald/30 transition-all duration-300 transform hover:scale-[1.02]">
+                    Explore All Tools
+                </a>
+            </div>
+        </section>
+        
+        <!-- --- Ad Slot 1: Mid-Page Banner --- -->
+        <section id="ad-slot-mid-1" class="py-6 bg-bg-dark flex justify-center w-full border-b border-gray-800">
+            <div class="text-center text-xs text-gray-400 p-4 bg-gray-800 border border-dashed border-gray-700 w-full max-w-4xl rounded-lg">
+                [Ad Slot 1 - Mid-Page Banner Placeholder]
+                <p class="mt-1 font-mono text-xs">
+                    Insert your AdSense Ad Unit ID code here.
+                </p>
+            </div>
+        </section>
+
+        <!-- --- Tool Category: Image Tools (Blue Accent) --- -->
+        <section id="image-tools" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-4xl font-bold text-primary-blue mb-10 border-b-4 border-primary-blue/30 inline-block pb-2">Image Tools</h3>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                
+                <!-- Tool Card: Compress -->
+                <a href="#" class="tool-card bg-card-dark p-6 rounded-xl flex flex-col items-center text-center shadow-lg hover:shadow-primary-blue/30">
+                    <svg class="w-12 h-12 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v2.25m-4.5-5.625l4.5 4.5m-4.5-4.5l-4.5 4.5m9 0V21"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 21V6M4.5 15.75h15"></path></svg>
+                    <h4 class="text-xl font-semibold text-white">Image Compressor</h4>
+                    <p class="text-sm text-gray-400 mt-1">Shrink JPG, PNG, and WebP files instantly.</p>
+                </a>
+
+                <!-- Tool Card: Convert -->
+                <a href="#" class="tool-card bg-card-dark p-6 rounded-xl flex flex-col items-center text-center shadow-lg hover:shadow-primary-blue/30">
+                    <svg class="w-12 h-12 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10m18-10v10M8 10l-4 2 4 2M16 10l4 2-4 2"></path></svg>
+                    <h4 class="text-xl font-semibold text-white">Image Converter</h4>
+                    <p class="text-sm text-gray-400 mt-1">Convert between JPG, PNG, WebP, and GIF formats.</p>
+                </a>
+
+                <!-- Tool Card: Resize -->
+                <a href="#" class="tool-card bg-card-dark p-6 rounded-xl flex flex-col items-center text-center shadow-lg hover:shadow-primary-blue/30">
+                    <svg class="w-12 h-12 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10m18-10v10M8 10l-4 2 4 2M16 10l4 2-4 2"></path></svg>
+                    <h4 class="text-xl font-semibold text-white">Image Resizer</h4>
+                    <p class="text-sm text-gray-400 mt-1">Change dimensions by pixel or percentage.</p>
+                </a>
+
+                <!-- Tool Card: Crop -->
+                <a href="#" class="tool-card bg-card-dark p-6 rounded-xl flex flex-col items-center text-center shadow-lg hover:shadow-primary-blue/30">
+                    <svg class="w-12 h-12 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5L21 3M13.5 10.5L6 18M13.5 10.5l-7.5-7.5M13.5 10.5l7.5 7.5"></path></svg>
+                    <h4 class="text-xl font-semibold text-white">Image Cropper</h4>
+                    <p class="text-sm text-gray-400 mt-1">Precisely crop images to specific ratios.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- --- Tool Category: PDF Tools (Emerald Accent) --- -->
+        <section id="pdf-tools" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-800">
+            <h3 class="text-4xl font-bold text-success-emerald mb-10 border-b-4 border-success-emerald/30 inline-block pb-2">PDF Tools</h3>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                
+                <!-- Tool Card: Merge -->
+                <a href="#" class="tool-card bg-card-dark p-6 rounded-xl flex flex-col items-center text-center shadow-lg hover:shadow-success-emerald/30">
+                    <svg class="w-12 h-12 text-success-emerald mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7v4m0 0v4m0-4h8m-8 0h-4M12 21h7a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2h5"></path></svg>
+                    <h4 class="text-xl font-semibold text-white">Merge PDF</h4>
+                    <p class="text-sm text-gray-400 mt-1">Combine multiple PDF files into one document.</p>
+                </a>
+
+                <!-- Tool Card: Split -->
+                <a href="#" class="tool-card bg-card-dark p-6 rounded-xl flex flex-col items-center text-center shadow-lg hover:shadow-success-emerald/30">
+                    <svg class="w-12 h-12 text-success-emerald mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m-4-8h8M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"></path></svg>
+                    <h4 class="text-xl font-semibold text-white">Split PDF</h4>
+                    <p class="text-sm text-gray-400 mt-1">Extract specific pages or page ranges easily.</p>
+                </a>
+
+                <!-- Tool Card: PDF to DOCX -->
+                <a href="#" class="tool-card bg-card-dark p-6 rounded-xl flex flex-col items-center text-center shadow-lg hover:shadow-success-emerald/30">
+                    <svg class="w-12 h-12 text-success-emerald mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7v10m8-10v10M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"></path></svg>
+                    <h4 class="text-xl font-semibold text-white">PDF to Word</h4>
+                    <p class="text-sm text-gray-400 mt-1">Convert PDFs into editable Microsoft Word documents.</p>
+                </a>
+
+                <!-- Tool Card: Protect PDF -->
+                <a href="#" class="tool-card bg-card-dark p-6 rounded-xl flex flex-col items-center text-center shadow-lg hover:shadow-success-emerald/30">
+                    <svg class="w-12 h-12 text-success-emerald mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15a4 4 0 100-8 4 4 0 000 8zM12 15v2m-2-6h4M9 12h6m-7 0v-4a2 2 0 012-2h2a2 2 0 012 2v4m-4 0v4m-2-4a2 2 0 01-2-2v-4a2 2 0 012-2h4a2 2 0 012 2v4a2 2 0 01-2 2h-4z"></path></svg>
+                    <h4 class="text-xl font-semibold text-white">Protect PDF</h4>
+                    <p class="text-sm text-gray-400 mt-1">Add password protection and encryption to your files.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- --- Ad Slot 2: Featured Placement --- -->
+        <section id="ad-slot-mid-2" class="py-8 bg-card-dark flex justify-center w-full border-t border-b border-gray-700">
+            <div class="text-center text-xs text-gray-400 p-4 bg-gray-800 border border-dashed border-gray-700 w-full max-w-4xl rounded-lg">
+                [Ad Slot 2 - Featured Ad Unit Placeholder]
+                <p class="mt-1 font-mono text-xs">
+                    This prime spot is ready for a high-performing ad unit.
+                </p>
+            </div>
+        </section>
+        
+        <!-- --- Value Proposition/Features Section --- -->
+        <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-3xl font-bold text-white mb-10">Why Choose ToolHub Pro?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="p-6 bg-card-dark rounded-xl shadow-lg border-t-4 border-primary-blue">
+                    <svg class="mx-auto w-10 h-10 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <h4 class="text-xl font-bold text-white mb-2">Blazing Fast</h4>
+                    <p class="text-gray-400">Utilize client-side processing for lightning-fast conversions and compression without server lag.</p>
+                </div>
+
+                <div class="p-6 bg-card-dark rounded-xl shadow-lg border-t-4 border-success-emerald">
+                    <svg class="mx-auto w-10 h-10 text-success-emerald mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15a4 4 0 100-8 4 4 0 000 8zM12 15v2m-2-6h4M9 12h6m-7 0v-4a2 2 0 012-2h2a2 2 0 012 2v4m-4 0v4m-2-4a2 2 0 01-2-2v-4a2 2 0 012-2h4a2 2 0 012 2v4a2 2 0 01-2 2h-4z"></path></svg>
+                    <h4 class="text-xl font-bold text-white mb-2">Maximum Security</h4>
+                    <p class="text-gray-400">Your files are processed locally in your browser and are never uploaded to our servers.</p>
+                </div>
+
+                <div class="p-6 bg-card-dark rounded-xl shadow-lg border-t-4 border-primary-blue">
+                    <svg class="mx-auto w-10 h-10 text-primary-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                    <h4 class="text-xl font-bold text-white mb-2">Zero Cost</h4>
+                    <p class="text-gray-400">All tools are 100% free to use, supported by strategically placed advertisements.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <p>&copy; 2024 ToolHub Pro. All Rights Reserved. | 
+                <a href="#" class="text-primary-blue hover:text-blue-400">Privacy Policy</a> | 
+                <a href="#" class="text-primary-blue hover:text-blue-400">Contact</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
+
